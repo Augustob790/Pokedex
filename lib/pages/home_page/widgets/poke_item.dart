@@ -62,6 +62,20 @@ class PokeItem extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Stack(
                 children: <Widget>[
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: Hero(
+                      child: Opacity(
+                        opacity: 0.2,
+                        child: Image.asset(
+                          ConstsApp.whitePokeball,
+                          height: 80,
+                          width: 80,
+                        ),
+                      ),
+                      tag: name + 'rotation',
+                    ),
+                  ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -86,25 +100,18 @@ class PokeItem extends StatelessWidget {
                   ),
                   Align(
                     alignment: Alignment.bottomRight,
-                    child: Opacity(
-                      opacity: 0.2,
-                      child: Image.asset(
-                        ConstsApp.whitePokeball,
+                    child: Hero(
+                      tag: name,
+                      child: CachedNetworkImage(
+                        alignment: Alignment.bottomRight,
                         height: 80,
                         width: 80,
+                        placeholder: (context, url) => Container(
+                          color: Colors.transparent,
+                        ),
+                        imageUrl:
+                            'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/$num.png',
                       ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: CachedNetworkImage(
-                      height: 80,
-                      width: 80,
-                      placeholder: (context, url) => Container(
-                        color: Colors.transparent,
-                      ),
-                      imageUrl:
-                          'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/$num.png',
                     ),
                   ),
                 ],
