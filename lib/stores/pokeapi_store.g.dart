@@ -57,13 +57,13 @@ mixin _$PokeApiStore on _PokeApiStoreBase, Store {
   final _$corPokemonAtom = Atom(name: '_PokeApiStoreBase.corPokemon');
 
   @override
-  Color get corPokemon {
+  dynamic get corPokemon {
     _$corPokemonAtom.reportRead();
     return super.corPokemon;
   }
 
   @override
-  set corPokemon(Color value) {
+  set corPokemon(dynamic value) {
     _$corPokemonAtom.reportWrite(value, super.corPokemon, () {
       super.corPokemon = value;
     });

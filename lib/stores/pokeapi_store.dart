@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:pokedex/consts/consts_api.dart';
@@ -14,12 +12,10 @@ class PokeApiStore = _PokeApiStoreBase with _$PokeApiStore;
 abstract class _PokeApiStoreBase with Store {
   @observable
   PokeAPI _pokeAPI;
-
   @observable
   Pokemon _pokemonAtual;
-
   @observable
-  Color corPokemon;
+  dynamic corPokemon;
 
   @observable
   int posicaoAtual;
@@ -29,7 +25,6 @@ abstract class _PokeApiStoreBase with Store {
 
   @computed
   Pokemon get pokemonAtual => _pokemonAtual;
-
   @action
   fetchPokemonList() {
     _pokeAPI = null;
@@ -52,7 +47,7 @@ abstract class _PokeApiStoreBase with Store {
   @action
   Widget getImage({String numero}) {
     return CachedNetworkImage(
-      placeholder: (context, url) => Container(
+      placeholder: (context, url) => new Container(
         color: Colors.transparent,
       ),
       imageUrl:
@@ -65,8 +60,8 @@ abstract class _PokeApiStoreBase with Store {
       final response = await http.get(ConstsAPI.pokeapiURL);
       var decodeJson = jsonDecode(response.body);
       return PokeAPI.fromJson(decodeJson);
-    } catch (error) {
-      print("Erro ao carregar lista");
+    } catch (error, stacktrace) {
+      print("Erro ao carregar lista" + stacktrace.toString());
       return null;
     }
   }

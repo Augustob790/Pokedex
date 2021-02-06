@@ -66,12 +66,12 @@ class PokeItem extends StatelessWidget {
                     alignment: Alignment.bottomRight,
                     child: Hero(
                       child: Opacity(
-                        opacity: 0.2,
                         child: Image.asset(
                           ConstsApp.whitePokeball,
                           height: 80,
                           width: 80,
                         ),
+                        opacity: 0.2,
                       ),
                       tag: name + 'rotation',
                     ),
@@ -106,7 +106,7 @@ class PokeItem extends StatelessWidget {
                         alignment: Alignment.bottomRight,
                         height: 80,
                         width: 80,
-                        placeholder: (context, url) => Container(
+                        placeholder: (context, url) => new Container(
                           color: Colors.transparent,
                         ),
                         imageUrl:
