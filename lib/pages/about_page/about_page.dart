@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
+import 'package:pokedex/pages/about_page/widgets/aba_sobre.dart';
 import 'package:pokedex/stores/pokeapi_store.dart';
 
 class AboutPage extends StatefulWidget {
@@ -12,6 +13,7 @@ class AboutPage extends StatefulWidget {
 class _AboutPageState extends State<AboutPage>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
+  PageController _pageController;
   PokeApiStore _pokemonStore;
 
   @override
@@ -19,11 +21,13 @@ class _AboutPageState extends State<AboutPage>
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
     _pokemonStore = GetIt.instance<PokeApiStore>();
+    _pageController = PageController(initialPage: 0);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -31,6 +35,11 @@ class _AboutPageState extends State<AboutPage>
           preferredSize: Size.fromHeight(40),
           child: Observer(builder: (context) {
             return TabBar(
+              onTap: (index) {
+                _pageController.animateToPage(index,
+                    duration: Duration(milliseconds: 300),
+                    curve: Curves.easeInOut);
+              },
               controller: _tabController,
               labelStyle: TextStyle(
                   //up to your taste
@@ -60,6 +69,22 @@ class _AboutPageState extends State<AboutPage>
             );
           }),
         ),
+      ),
+      body: PageView(
+        onPageChanged: (index) {
+          _tabController.animateTo(index,
+              duration: Duration(milliseconds: 300));
+        },
+        controller: _pageController,
+        children: <Widget>[
+          AbaSobre(),
+          Container(
+            color: Colors.blue,
+          ),
+          Container(
+            color: Colors.yellow,
+          ),
+        ],
       ),
     );
   }

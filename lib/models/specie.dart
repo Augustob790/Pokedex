@@ -3,9 +3,8 @@ class Specie {
   int captureRate;
   ObjPokemon color;
   EvolutionChain evolutionChain;
-  Null evolvesFromSpecies;
+  ObjPokemon evolvesFromSpecies;
   List<FlavorTextEntries> flavorTextEntries;
-  List<Null> formDescriptions;
   bool formsSwitchable;
   int genderRate;
   List<Genera> genera;
@@ -16,8 +15,6 @@ class Specie {
   int hatchCounter;
   int id;
   bool isBaby;
-  bool isLegendary;
-  bool isMythical;
   String name;
   List<Names> names;
   int order;
@@ -33,7 +30,6 @@ class Specie {
       this.evolutionChain,
       this.evolvesFromSpecies,
       this.flavorTextEntries,
-      this.formDescriptions,
       this.formsSwitchable,
       this.genderRate,
       this.genera,
@@ -44,8 +40,6 @@ class Specie {
       this.hatchCounter,
       this.id,
       this.isBaby,
-      this.isLegendary,
-      this.isMythical,
       this.name,
       this.names,
       this.order,
@@ -62,7 +56,9 @@ class Specie {
     evolutionChain = json['evolution_chain'] != null
         ? new EvolutionChain.fromJson(json['evolution_chain'])
         : null;
-    evolvesFromSpecies = json['evolves_from_species'];
+    evolvesFromSpecies = json['evolves_from_species'] != null
+        ? new ObjPokemon.fromJson(json['evolves_from_species'])
+        : null;
     if (json['flavor_text_entries'] != null) {
       flavorTextEntries = new List<FlavorTextEntries>();
       json['flavor_text_entries'].forEach((v) {
@@ -87,8 +83,6 @@ class Specie {
     hatchCounter = json['hatch_counter'];
     id = json['id'];
     isBaby = json['is_baby'];
-    isLegendary = json['is_legendary'];
-    isMythical = json['is_mythical'];
     name = json['name'];
     if (json['names'] != null) {
       names = new List<Names>();
@@ -152,8 +146,6 @@ class Specie {
     data['hatch_counter'] = this.hatchCounter;
     data['id'] = this.id;
     data['is_baby'] = this.isBaby;
-    data['is_legendary'] = this.isLegendary;
-    data['is_mythical'] = this.isMythical;
     data['name'] = this.name;
     if (this.names != null) {
       data['names'] = this.names.map((v) => v.toJson()).toList();

@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedex/consts/consts_api.dart';
 import 'package:pokedex/consts/consts_app.dart';
 
 class PokeItem extends StatelessWidget {
@@ -124,8 +123,8 @@ class PokeItem extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                ConstsAPI.getColorType(type: types[0]).withOpacity(0.6),
-                ConstsAPI.getColorType(type: types[0])
+                ConstsApp.getColorType(type: types[0]).withOpacity(0.6),
+                ConstsApp.getColorType(type: types[0])
               ]),
           borderRadius: BorderRadius.all(
             Radius.circular(20),
