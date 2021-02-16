@@ -124,25 +124,6 @@ class AbaSobre extends StatelessWidget {
                     SizedBox(
                       height: 5,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          'Ovo',
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black54),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: Text(
-                            _pokeApiStore.pokemonAtual.egg,
-                            style: TextStyle(fontSize: 14, color: Colors.black),
-                          ),
-                        ),
-                      ],
-                    ),
                   ],
                 );
               }),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
+import 'package:pokedex/pages/about_page/widgets/aba_evolu%C3%A7%C3%A3o.dart';
 import 'package:pokedex/pages/about_page/widgets/aba_sobre.dart';
 import 'package:pokedex/stores/pokeapi_store.dart';
 
@@ -78,6 +79,7 @@ class _AboutPageState extends State<AboutPage>
         controller: _pageController,
         children: <Widget>[
           AbaSobre(),
+          AbaEvolucao(),
           Container(
             color: Colors.blue,
           ),
