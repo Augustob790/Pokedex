@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
 import 'package:pokedex/pages/about_page/widgets/aba_evolu%C3%A7%C3%A3o.dart';
 import 'package:pokedex/pages/about_page/widgets/aba_sobre.dart';
+import 'package:pokedex/pages/about_page/widgets/aba_status.dart';
 import 'package:pokedex/stores/pokeapi_store.dart';
 
 class AboutPage extends StatefulWidget {
@@ -80,12 +81,7 @@ class _AboutPageState extends State<AboutPage>
         children: <Widget>[
           AbaSobre(),
           AbaEvolucao(),
-          Container(
-            color: Colors.blue,
-          ),
-          Container(
-            color: Colors.yellow,
-          ),
+          AbaStatus(),
         ],
       ),
     );
