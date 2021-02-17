@@ -9,6 +9,7 @@ import 'package:pokedex/stores/pokeapiv2_store.dart';
 class AbaSobre extends StatelessWidget {
   final PokeApiV2Store _pokeApiV2Store = GetIt.instance<PokeApiV2Store>();
   final PokeApiStore _pokeApiStore = GetIt.instance<PokeApiStore>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -104,22 +105,6 @@ class AbaSobre extends StatelessWidget {
                     ),
                     SizedBox(
                       height: 5,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          'Ovo',
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black54),
-                        ),
-                        Text(
-                          _pokeApiStore.pokemonAtual.egg,
-                          style: TextStyle(fontSize: 14, color: Colors.black),
-                        ),
-                      ],
                     ),
                     SizedBox(
                       height: 5,
